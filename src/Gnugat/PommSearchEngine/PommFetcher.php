@@ -57,7 +57,8 @@ class PommFetcher implements Fetcher
     {
         $pommParameters = array();
         foreach ($parameters as $parameter) {
-            $sql = str_replace($parameter['name'], '$*', $sql);
+            $parameterName = ':'.trim($parameter['name'], ':');
+            $sql = str_replace($parameterName, '$*', $sql);
             $pommParameters[] = $parameter['value'];
         }
 
